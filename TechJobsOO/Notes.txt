@@ -1,0 +1,66 @@
+﻿Review Sally’s code in the Employer class to learn how to assign a unique ID.
+	
+
+
+Add properties and custom methods as needed to the Location, CoreCompetency, and PositionType classes.
+positiontype: done?
+corecompetency: done?
+location: done
+
+Complete the Job class using what you learned in steps 1 and 2.
+
+
+Use unit testing to verify the constructors and Equals() methods for the Job class.
+
+"Product tester" for Name, "ACME" for EmployerName, "Desert" for JobLocation, 
+"Quality control" for JobType, and "Persistence" for JobCoreCompetency
+Job jobTest = new Job("Product tester", EmployerName("Acme"), )
+
+
+
+Use TDD to design and code a custom ToString() method for the Job class.
+
+
+            +
+            "ID: "+ Id + "\n" +
+            "Name: " + Name + "\n" +
+            "Employer: "+ EmployerName + "\n" +
+            "Location: " + EmployerLocation + "\n" +
+            "Position Type: " + JobType + "\n" +
+            "Core Competency: " + JobCoreCompetency + "\n" + 
+            " ";
+
+
+Use inheritance to DRY the code within Employer, Location, CoreCompetency, and PositionType
+
+ public int Id { get; }
+        private static int nextId = 1;
+        private string name = "Data Not Available";
+        public string Value
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        
+
+        public Employer()
+        {
+            Id = nextId;
+            nextId++;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Employer employer &&
+                   Id == employer.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Id);
+        }
+
+        public override string ToString()
+        {
+            return Value;
+        }
